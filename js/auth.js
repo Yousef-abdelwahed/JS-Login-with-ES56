@@ -16,6 +16,6 @@ class Auth{
     }
     logout(){
         localStorage.removeItem("auth");
-        window.location.replace("./");
+        window.location.replace("/HTML");
     }
 }
