@@ -12,7 +12,8 @@ class Login {
 			e.preventDefault();
 			var error = 0;
 			self.fields.forEach((field) => {
-				const input = document.querySelector(`#${field}`);
+            const    input = document.querySelector(`#${field}`);
+                console.log(input.value)
 				if (self.validateFields(input) == false) {
 					error++;
 				}
@@ -36,20 +37,14 @@ class Login {
 		}else{
             if(field.type=="password" ){
                 if(field.value.length <8){
-                    this.setStatus(
-                        field,
-                        `${field.previousElementSibling.innerText} must be atlist 8 charachters`
-                        ,"error"
-                    );
+                    this.setStatus(field,`${field.previousElementSibling.innerText} must be atlist 8 charachters`,"error");
                     return false;
                 }else{
                     this.setStatus(field,null,"success")
                     return true;
                 }
-            }else{
-                this.setStatus(field,null,"success")
-                    return true;
             }
+          
         }
     
     };
@@ -59,13 +54,12 @@ class Login {
         const errorMessage=field.parentElement.querySelector('.error-message');
         if(status=="success"){
             if(errorMessage){
-                errorMessage.innerText="";
+                errorMessage.style.display="none";
             }
-            field.classList.remove("input-error")
         }
         if(status=="error"){
             errorMessage.innerText=message;
-            field.classList.add("input-error");
+
         }
     };
     
